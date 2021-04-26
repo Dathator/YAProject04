@@ -94,13 +94,13 @@ def game():
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
-            game2.icon = file_path
-        file1 = request.files['file']
+            game2.icon = filename
+        file1 = request.files['file1']
         if file1:
             filename1 = secure_filename(file1.filename)
             file_path1 = os.path.join(app.config['UPLOAD_FOLDER'], filename1)
             file1.save(file_path1)
-            game2.game_files = file_path1
+            game2.game_files = filename1
         db_sess.merge(current_user)
         db_sess.commit()
         return redirect('/shop')
