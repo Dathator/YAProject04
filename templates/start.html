@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>TB-VideoGames-Shop</title>
+</head>
+<style>
+    body {
+      background-color: #494949;
+    }
+    form {
+      background-color: white;
+      height: 50%;
+      width: 50%;
+      position: absolute;
+      top: 25%;
+      left: 25%;
+    }
+</style>
+<body>
+    <form>
+        {% if current_user.is_authenticated %}
+            <p align="center">
+                <a class="navbar-brand btn btn-primary" href="/main_menu">{{ current_user.name }}</a>
+            </p>
+            <p align="center">
+                <a class="btn btn-primary" href="/registration">Зарегистрировать ещё один аккаунт</a>
+            </p>
+            <p align="center">
+                <a class="btn btn-success" href="/authorisation">Войти с другого аккаунта</a>
+            </p>
+        {% else %}
+            <p>
+                <a class="btn btn-primary " href="/registration">Зарегистрироваться</a>
+                <a class="btn btn-success" href="/authorisation">Войти</a>
+            </p>
+        {% endif %}
+    </form>
+</body>
+</html>

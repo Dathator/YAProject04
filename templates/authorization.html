@@ -1,0 +1,43 @@
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>TB-VideoGames-Shop</title>
+    </head>
+    <style>
+        body {
+          background-color: #494949;
+        }
+
+        form {
+          background-color: white;
+          height: 50%;
+          width: 50%;
+          position: absolute;
+          top: 25%;
+          left: 25%;
+        }
+    </style>
+    <body>
+        <form action="/authorisation" method="post">
+            <h1 align="center">Авторизация</h1>
+            {{ form.hidden_tag() }}
+            <p align="center">
+                {{ form.name.label }}<br>
+                {{ form.name(class="form-control") }}<br>
+                {% for error in form.name.errors %}
+                <p class="alert alert-danger" role="alert" align="center">{{ error }}</p>
+                {% endfor %}
+            </p>
+            <p align="center">
+                {{ form.password.label }}<br>
+                {{ form.password(class="form-control", type="password") }}<br>
+                {% for error in form.password.errors %}
+            <p class="alert alert-danger" role="alert" align="center">{{ error }}</p>
+            {% endfor %}
+            </p>
+            <p align="center">{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+            <div align="center">{{ message }}</div>
+            <div align="center">Нет аккаунта?<a href="/registration">Зарегистрируйтесь</a></div>
+        </form>
+    </body>
+{% endblock %}

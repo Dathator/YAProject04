@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>TB-VideoGames-Shop</title>
+</head>
+<body>
+    <div class = "menu-panel">
+        <form class="form-h" action="/shop">
+            <button type="submit" class="menu-panel-btn">Магазин</button>
+        </form>
+        <form class="form-h" action="/news">
+            <button type="submit" class="menu-panel-btn">Статьи</button>
+        </form>
+        <form class="form-h" action="/library">
+            <button type="submit" class="menu-panel-btn">Библиотека</button>
+        </form>
+    </div>
+    <div class="board">
+        {% block content %}
+        <h1>Добавить игру:</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.title.label }}<br>
+                {{ form.title(class="form-control") }}<br>
+                {% for error in form.title.errors %}
+                    <p class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.short_content.label }}<br>
+                {{ form.short_content(class="form-control") }}<br>
+                {% for error in form.short_content.errors %}
+                    <p content="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.full_content.label }}<br>
+                {{ form.full_content(class="form-control") }}<br>
+                {% for error in form.full_content.errors %}
+                    <p content="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.price.label }}<br>
+                {{ form.price(class="form-control") }}<br>
+                {% for error in form.price.errors %}
+                    <p class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <input type="file" name="file">
+            <input type="file" name="file1">
+            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+            {{message}}
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>TB-VideoGames-Shop</title>
+</head>
+<body>
+    <div class = "menu-panel">
+        <form class="form-h" action="/shop">
+            <button type="submit" class="menu-panel-btn">Магазин</button>
+        </form>
+        <form class="form-h" action="/news">
+            <button type="submit" class="menu-panel-btn">Статьи</button>
+        </form>
+        <form class="form-h" action="/library">
+            <button type="submit" class="menu-panel-btn">Библиотека</button>
+        </form>
+    </div>
+    {% block content %}
+    <div class="board">
+        <p><img src="/static/img/no_image.jpg" class="game-img-view"></p>
+        <div class="game-view-info">
+            <h1>{{ game.designation }}</h1>
+            <p><br></p>
+            <div>
+                {{ form.buy(type="submit", class="btn btn-primary", style="border: 1px solid; border-radius: 5px; background-color: #4DE235; height: 50px; width: 200px") }}
+                {% if game.price != 0 %}
+                    <div style="left: 210px; top: 100px; position: absolute; width: 100px; font-size: 30px;">{{ game.price }}руб</div>
+                {% else %}
+                    <div style="left: 210px; top: 100px; position: absolute; width: 100px; font-size: 30px;">Бесплатно</div>
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <pre style="font-size: 30px; font-weight: bold;">   Об игре:</pre>
+            <div>{{ game.full_description_of_game }}</div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
