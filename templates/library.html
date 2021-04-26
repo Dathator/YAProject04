@@ -30,7 +30,7 @@
                         <div class="game-info">
                             <h4>{{ item.designation }}</h4>
                             <a class="btn btn-secondary" href="/game/{{ item.id }}">Перейти к игре</a>
-                            <a class="btn btn-secondary" style="background-color: #D4D829;" href="url_for('uploads', {{ item.game_files }})">Скачать игру на компьютер</a>
+                            <a class="btn btn-secondary" style="background-color: #D4D829;" href="{ url_for('uploads', .game_files) }">Скачать игру на компьютер</a>
                         </div>
                     </div>
                 {% endfor %}

@@ -30,13 +30,13 @@
         {% for item in games %}
         <form action="" method="post">
             <div class="game-board">
-                <p><img src="/uploads/{{ item.icon }}" class="game-img"></p>
+                <p><img src="/uploads{{ item.icon }}" class="game-img"></p>
                 <div class="game-info">
                     <h4>{{ item.designation }}</h4>
                     <div>Автор - {{ item.user.name }}</div>
                     <div>Дата выпуска - {{ item.game_upload_date }}</div>
                     <a class="btn btn-secondary" href="/game/{{ item.id }}">Перейти к игре</a>
-                    {% if current_user.name == item.user.name %}
+                    {% if item in current_user.games %}
                     <div>
                         <a href="/game_edit/{{ item.id }}" class="btn btn-warning">
                             Изменить

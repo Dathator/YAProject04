@@ -15,4 +15,4 @@ class Game(SqlAlchemyBase):
     game_files = sqlalchemy.Column(sqlalchemy.String)
     game_upload_date = sqlalchemy.Column(sqlalchemy.Date, default=date.today())
     price = sqlalchemy.Column(sqlalchemy.Integer, default=0)
-    icon = sqlalchemy.Column(sqlalchemy.String, default="/static/img/no_image.jpg")
+    icon = sqlalchemy.Column(sqlalchemy.String, default="no_image.jpg")
