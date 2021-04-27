@@ -29,10 +29,10 @@
             <p><br></p>
             <div>
                 {{ form.buy(type="submit", class="btn btn-primary", style="border: 1px solid; border-radius: 5px; background-color: #4DE235; height: 50px; width: 200px") }}
-                {% if game.price != 0 %}
-                    <div style="left: 210px; top: 100px; position: absolute; width: 100px; font-size: 30px;">{{ game.price }}руб</div>
-                {% else %}
+                {% if game.price == 0 or not game.price %}
                     <div style="left: 210px; top: 100px; position: absolute; width: 100px; font-size: 30px;">Бесплатно</div>
+                {% else %}
+                    <div style="left: 210px; top: 100px; position: absolute; width: 100px; font-size: 30px;">{{ game.price }}руб</div>
                 {% endif %}
             </div>
         </div>

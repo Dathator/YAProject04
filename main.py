@@ -74,9 +74,6 @@ def main_menu():
 def shop():
     db_sess = db_session.create_session()
     games = db_sess.query(Game)
-    for i in games:
-        print(i.developer_id)
-    print(current_user.id)
     return render_template("shop.html", games=games)
 
 
@@ -113,7 +110,7 @@ def game():
 @app.route('/game/<int:id>', methods=['GET', 'POST'])
 def game_view(id):
     db_sess = db_session.create_session()
-    game1 = db_sess.query(Game).filter(Game.id == id, Game.user == current_user).first()
+    game1 = db_sess.query(Game).filter(Game.id == id).first()
     form = GameViewForm()
     if form.validate_on_submit():
         current_user.library.append(game1)
