@@ -40,7 +40,7 @@ def authorisation():
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.name == form.name.data).first()
         if user and user.check_password(form.password.data):
-            login_user(user, remember=form.remember_me.data)
+            login_user(user)
             return redirect("/main_menu")
         return render_template('authorization.html',
                                message="Неправильный логин или пароль",
@@ -74,6 +74,9 @@ def main_menu():
 def shop():
     db_sess = db_session.create_session()
     games = db_sess.query(Game)
+    for i in games:
+        print(i.developer_id)
+    print(current_user.id)
     return render_template("shop.html", games=games)
 
 
@@ -232,7 +235,9 @@ def news_delete(id):
 
 @app.route('/library')
 def library():
-    return render_template("library.html")
+    db_sess = db_session.create_session()
+    library1 = current_user.library
+    return render_template("library.html", lib=library1)
 
 
 if __name__ == '__main__':

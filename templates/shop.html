@@ -36,7 +36,7 @@
                     <div>Автор - {{ item.user.name }}</div>
                     <div>Дата выпуска - {{ item.game_upload_date }}</div>
                     <a class="btn btn-secondary" href="/game/{{ item.id }}">Перейти к игре</a>
-                    {% if item in current_user.games %}
+                    {% if item.developer_id == current_user.id %}
                     <div>
                         <a href="/game_edit/{{ item.id }}" class="btn btn-warning">
                             Изменить

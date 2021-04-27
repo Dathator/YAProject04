@@ -12,7 +12,7 @@ class User(SqlAlchemyBase, UserMixin):
     hashed_password = sqlalchemy.Column(sqlalchemy.String)
     news = orm.relation("News", back_populates='user')
     games = orm.relation("Game", back_populates='user')
-    library = []
+    library = orm.relation("Game")
 
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)

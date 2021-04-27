@@ -24,7 +24,7 @@
         {% block content %}
             <form action="" method="post">
                 <h1>Ваши игры:</h1>
-                {% for item in current_user.library %}
+                {% for item in lib %}
                     <div class="game-board" style="background-color: #235170;">
                         <p><img src="/uploads/{{ item.icon }}" class="game-img"></p>
                         <div class="game-info">
