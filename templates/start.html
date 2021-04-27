@@ -23,19 +23,12 @@
 </style>
 <body>
     <form>
-        {% if current_user.is_authenticated %}
-            <p align="center">
-                <a class="navbar-brand btn btn-primary" href="/main_menu">{{ current_user.name }}</a>
-            </p>
-            <p align="center">
-                <a class="btn btn-success" href="/authorisation">Войти с другого аккаунта</a>
-            </p>
-        {% else %}
-            <p>
-                <a class="btn btn-primary " href="/registration">Зарегистрироваться</a>
-                <a class="btn btn-success" href="/authorisation">Войти</a>
-            </p>
-        {% endif %}
+        <p align="center">
+            <a class="btn btn-primary " href="/registration">Зарегистрироваться</a>
+        </p>
+        <p align="center">
+            <a class="btn btn-success" href="/authorisation">Войти</a>
+        </p>
     </form>
 </body>
 </html>
