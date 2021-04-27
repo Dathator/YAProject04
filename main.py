@@ -101,6 +101,8 @@ def game():
             file_path1 = os.path.join(app.config['UPLOAD_FOLDER'], filename1)
             file1.save(file_path1)
             game2.game_files = filename1
+        if db_sess.query(Game).filter(Game.designation == form.title.data).first():
+            return render_template('game.html', form=form, message="Игар с таким названием уже есть!")
         db_sess.merge(current_user)
         db_sess.commit()
         return redirect('/shop')

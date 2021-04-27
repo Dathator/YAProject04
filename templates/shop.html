@@ -49,7 +49,11 @@
                     {% endif %}
                     <div class="description">
                         <pre style="font-weight: bold; font-size: 20px;">   Краткое писание:</pre>
-                        {{ item.short_description_of_game }}
+                        {% if not item.short_description_of_game %}
+                            <p>Нету</p>
+                        {% else %}
+                            <p>{{ item.short_description_of_game }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

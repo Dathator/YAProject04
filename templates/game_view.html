@@ -38,7 +38,11 @@
         </div>
         <div>
             <pre style="font-size: 30px; font-weight: bold;">   Об игре:</pre>
-            <div>{{ game.full_description_of_game }}</div>
+            {% if not game.full_description_of_game %}
+                <p>Нету</p>
+            {% else %}
+                <div>{{ game.full_description_of_game }}</div>
+            {% endif %}
         </div>
     </div>
     {% endblock %}
